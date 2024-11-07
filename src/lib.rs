@@ -1,7 +1,7 @@
 mod utils;
 use diff_match_patch_rs::{Efficient, Ops, dmp::DiffMatchPatch};
-use wasm_bindgen::{JsValue, prelude::wasm_bindgen};
 use serde_wasm_bindgen::to_value;
+use wasm_bindgen::{JsValue, prelude::wasm_bindgen};
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -28,21 +28,19 @@ impl Differ {
             Ok(d) => d,
             Err(_) => return Err("error while diffing".to_string()),
         };
-
-        // Make diff data available for javascript
         let serializable_diffs: Vec<(i32, String)> = diffs
             .iter()
             .map(|diff| {
-                let op = match diff.op() {
+                let mapped_op = match diff.op() {
+                    Ops::Delete => -1,
                     Ops::Equal => 0,
                     Ops::Insert => 1,
-                    Ops::Delete => -1,
                 };
                 let text = diff.to_string();
-                (op, text)
+                // let text = String::from_utf8_lossy(diff.data()).into_owned();
+                (mapped_op, text)
             })
             .collect();
-
         to_value(&serializable_diffs).map_err(|e| e.to_string())
     }
 }

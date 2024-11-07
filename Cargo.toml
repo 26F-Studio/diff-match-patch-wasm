@@ -1,6 +1,6 @@
 [package]
-name = "diff-match-patch-wasm"
-version = "1.0.2"
+name = "diff-match-patch-wasm-node"
+version = "1.0.0"
 authors = ["ParticleG <particle_g@outlook.com>"]
 edition = "2021"
 

@@ -1,10 +1,8 @@
-cargo-features = ["edition2024"]
-
 [package]
 name = "diff-match-patch-wasm"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["ParticleG <particle_g@outlook.com>"]
-edition = "2024"
+edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

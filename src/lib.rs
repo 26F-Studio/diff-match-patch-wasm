@@ -1,13 +1,6 @@
-mod utils;
 use diff_match_patch_rs::{Efficient, Ops, dmp::DiffMatchPatch};
 use serde_wasm_bindgen::to_value;
 use wasm_bindgen::{JsValue, prelude::wasm_bindgen};
-
-// When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
-// allocator.
-#[cfg(feature = "wee_alloc")]
-#[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
 #[derive(Default)]
@@ -19,7 +12,6 @@ pub struct Differ {
 impl Differ {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
-        utils::set_panic_hook();
         let dmp = DiffMatchPatch::default();
         Self { dmp }
     }

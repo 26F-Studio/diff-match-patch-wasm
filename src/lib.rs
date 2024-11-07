@@ -19,6 +19,7 @@ pub struct Differ {
 impl Differ {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
+        utils::set_panic_hook();
         let dmp = DiffMatchPatch::default();
         Self { dmp }
     }

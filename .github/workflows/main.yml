@@ -36,10 +36,6 @@ jobs:
         run: |
           cargo install wasm-pack
           wasm-pack build
-      - name: List files
-        run: |
-          ls -la
-          ls -la pkg
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:

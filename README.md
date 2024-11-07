@@ -14,9 +14,9 @@ npm install diff-match-patch-wasm
 ## Usage
 
 ```javascript
-import { DiffMatchPatch } from 'diff-match-patch-wasm';
+import { Differ } from 'diff-match-patch-wasm';
 
-const dmp = DiffMatchPatch.new();
+const dmp = new Differ();
 const diffs = dmp.diff_main('Hello, world!', 'Goodbye, world!');
 console.log(diffs);
 ```
